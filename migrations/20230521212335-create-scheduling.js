@@ -3,45 +3,45 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('agendamento', { 
+    await queryInterface.createTable('Scheduling', { 
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      data_agendamento: {
+      date_scheduling: {
         type: Sequelize.DATE
       },
-      obs_cliente: {
+      client_obs: {
         type: Sequelize.STRING
       },
-      usuario_id: {
+      user_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'usuario', 
+          model: 'User', 
           key: 'id'
         }
       },
-      servico_id: {
+      service_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'servico', 
+          model: 'Service', 
           key: 'id'
         }
       },
-      grade_horarios_usuario: {
+      timetable_user: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'grade_horarios', 
-          key: 'usuario_id'
+          model: 'TimeTable', 
+          key: 'user_id'
         }
       },
-      grade_horarios_horario: {
+      timetable_schedule_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'grade_horarios', 
-          key: 'horario_id'
+          model: 'TimeTable', 
+          key: 'schedule_id'
         }
       }
 
@@ -49,6 +49,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('agendamento');
+    await queryInterface.dropTable('Scheduling');
   }
 };

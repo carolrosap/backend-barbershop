@@ -3,24 +3,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('grade_horarios', { 
+    await queryInterface.createTable('TimeTable', { 
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      usuario_id: {
+      user_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'usuario', 
+          model: 'User', 
           key: 'id'
         }
       },
-      horario_id: {
+      schedule_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'horario', 
+          model: 'Schedule', 
           key: 'id'
         }
       }
@@ -29,6 +29,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('grade_horarios');
+    await queryInterface.dropTable('TimeTable');
   }
 };

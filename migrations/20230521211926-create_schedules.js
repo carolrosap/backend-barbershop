@@ -3,23 +3,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('horario', {
+    await queryInterface.createTable('Schedule', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      hora: {
+      time: {
         type: Sequelize.TIME
       },
-      disponivel: {
+      avaiable: {
         type: Sequelize.TINYINT
       }
     });
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('horario');
+    await queryInterface.dropTable('Schedule');
   }
 };

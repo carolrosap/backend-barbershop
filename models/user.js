@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true, // Adicione essa opção para definir 'id' como chave primária
+      autoIncrement: true
+    },
     active: DataTypes.INTEGER,
     neighborhood: DataTypes.STRING,
     zip_code: DataTypes.INTEGER,
@@ -34,6 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+    freezeTableName: true,
+    timestamps: false
   });
   return User;
 };

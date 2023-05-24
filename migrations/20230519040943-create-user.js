@@ -31,7 +31,7 @@ module.exports = {
       email: {
         type: Sequelize.STRING(45)
       },
-      addres: {
+      address: {
         type: Sequelize.STRING(100)
       },
       state: {

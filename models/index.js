@@ -40,4 +40,22 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+const User = require('./User')(sequelize, Sequelize.DataTypes);
+db.User = User;
+
+const CategoryService = require('./CategoryService')(sequelize, Sequelize.DataTypes);
+db.CategoryService = CategoryService;
+
+const Service = require('./Service')(sequelize, Sequelize.DataTypes);
+db.Service = Service;
+
+const Schedule = require('./Schedule')(sequelize, Sequelize.DataTypes);
+db.Schedule = Schedule;
+
+const Scheduling = require('./Scheduling')(sequelize, Sequelize.DataTypes);
+db.Scheduling = Scheduling;
+
+const TimeTable = require('./TimeTable')(sequelize, Sequelize.DataTypes);
+db.TimeTable = TimeTable;
+
 module.exports = db;

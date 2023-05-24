@@ -20,13 +20,19 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   TimeTable.init({
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true, // Adicione essa opção para definir 'id' como chave primária
+      autoIncrement: true
+    },
     user_id: DataTypes.INTEGER,
     schedule_id: DataTypes.INTEGER
 
   }, {
     sequelize,
     modelName: 'TimeTable',
+    freezeTableName: true,
+    timestamps: false
   });
   return TimeTable;
 };

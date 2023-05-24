@@ -12,12 +12,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Schedule.init({
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true, // Adicione essa opção para definir 'id' como chave primária
+      autoIncrement: true
+    },
     available: DataTypes.TINYINT,
 
   }, {
     sequelize,
     modelName: 'Schedule',
+    freezeTableName: true,
+    timestamps: false
   });
   return Schedule;
 };

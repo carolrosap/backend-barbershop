@@ -20,12 +20,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Service.init({
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true, // Adicione essa opção para definir 'id' como chave primária
+      autoIncrement: true
+    },
     category_id: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Service',
+    freezeTableName: true,
+    timestamps: false
   });
   return Service;
 };

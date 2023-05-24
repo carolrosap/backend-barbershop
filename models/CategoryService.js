@@ -12,12 +12,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   CategoryService.init({
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     name: DataTypes.STRING,
     description: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'CategoryService',
+    freezeTableName: true,
+    timestamps: false
   });
   return CategoryService;
 };

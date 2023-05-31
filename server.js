@@ -1,17 +1,15 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 
-// Definir middlewares globais, como o body-parser, cors, etc.
+const clientRoutes = require('./routes/clientRoutes');
+const professionalRoutes = require('./routes/professionalRoutes');
+const serviceRoutes = require('./routes/serviceRoutes');
 
-// Importar as rotas
-const userRoutes = require('./routes/userRoutes');
-const productRoutes = require('./routes/productRoutes');
+app.use('/client', clientRoutes);
+app.use('/professional', professionalRoutes);
+app.use('/service', serviceRoutes);
 
-// Usar as rotas
-app.use('/users', userRoutes);
-app.use('/products', productRoutes);
-
-// Iniciar o servidor
 app.listen(3000, () => {
   console.log('Server started on port 3000');
 });

@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const ServiceController = require('../controllers/ServiceController');
+const serviceController = new ServiceController();
 
-// Definir endpoints
-router.get('/', ServiceController.getAllServices);
-router.get('/:id', ServiceController.getServiceById);
-router.post('/', ServiceController.createService);
-router.put('/:id', ServiceController.updateService);
-router.delete('/:id', ServiceController.deleteService);
+router.get('/', serviceController.getAllServices);
+
 
 module.exports = router;

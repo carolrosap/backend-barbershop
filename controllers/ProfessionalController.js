@@ -17,6 +17,17 @@ class ProfessionalController extends UserController {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     }
+    async createProfessional(req, res) {
+        try {
+            const professionaltData = req.body;
+            professionaltData.user_type = 'professional'; // Ensure that the user_type is set to 'client'
+            const newProfessional = await User.create(professionaltData);
+            res.status(201).json(newProfessional);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    }
 }
 
 module.exports = ProfessionalController;

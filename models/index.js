@@ -30,6 +30,7 @@ fs
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
+
 const User = require('./User')(sequelize, Sequelize.DataTypes);
 db.User = User;
 
@@ -47,16 +48,14 @@ db.Scheduling = Scheduling;
 
 const TimeTable = require('./TimeTable')(sequelize, Sequelize.DataTypes);
 db.TimeTable = TimeTable;
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
 
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-
 
 module.exports = db;

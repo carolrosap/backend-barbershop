@@ -1,15 +1,13 @@
 const express = require('express');
-const app = express();
-app.use(express.json());
+const server = express();
 
 const clientRoutes = require('./routes/clientRoutes');
 const professionalRoutes = require('./routes/professionalRoutes');
 const serviceRoutes = require('./routes/serviceRoutes');
 
-app.use('/client', clientRoutes);
-app.use('/professional', professionalRoutes);
-app.use('/service', serviceRoutes);
+server.use(express.json());
+server.use('/client', clientRoutes);
+server.use('/professional', professionalRoutes);
+server.use('/service', serviceRoutes);
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
-});
+module.exports = server; // Exportar o app, não iniciar o servidor aqui

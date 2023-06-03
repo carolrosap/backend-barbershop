@@ -1,11 +1,11 @@
 const request = require('supertest');
-const server = require('../../server'); // Importa a instância do seu aplicativo express
+const server = require('../../server'); 
 const db = require('../../models');
 let app;
 
 describe('Test /service route post', function() {
   beforeEach(() => {
-    app = server.listen(4000); // Inicia o servidor em uma porta diferente para evitar conflitos
+    app = server.listen(4001); 
   });
 
   afterEach((done) => {

@@ -1,11 +1,11 @@
 const request = require('supertest');
-const server = require('../../server'); // Importa a instância do seu aplicativo express
+const server = require('../../server'); 
 const db = require('../../models');
 let app;
 
 describe('Test /professional post route', function () {
   beforeEach(() => {
-    app = server.listen(4002); // Inicia o servidor em uma porta diferente para evitar conflitos
+    app = server.listen(4002); 
   });
 
   afterEach((done) => {
@@ -26,7 +26,6 @@ describe('Test /professional post route', function () {
     expect(response.statusCode).toBe(201);
     expect(response.body.name).toBe('Barbeiro X');
     await db.sequelize.close();
-    // Add more assertions as needed
   });
 
 

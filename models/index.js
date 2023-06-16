@@ -46,9 +46,6 @@ db.Schedule = Schedule;
 const Scheduling = require('./Scheduling')(sequelize, Sequelize.DataTypes);
 db.Scheduling = Scheduling;
 
-const TimeTable = require('./TimeTable')(sequelize, Sequelize.DataTypes);
-db.TimeTable = TimeTable;
-
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);

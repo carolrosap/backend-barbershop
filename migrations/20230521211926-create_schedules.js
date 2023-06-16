@@ -13,8 +13,18 @@ module.exports = {
       time: {
         type: Sequelize.TIME
       },
+      date: {
+        type: Sequelize.DATEONLY
+      },
       available: {
         type: Sequelize.TINYINT
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'User', 
+          key: 'id' 
+        }
       }
     });
   },

@@ -2,7 +2,7 @@ const Schedule = require('../models/Schedule');
 
 exports.getAllSchedules = async (req, res) => {
   try {
-    const schedules = await Service.findAll();
+    const schedules = await Schedule.findAll();
     res.json(schedules);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });

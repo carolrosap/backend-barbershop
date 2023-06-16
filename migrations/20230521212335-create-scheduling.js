@@ -10,12 +10,6 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      date_scheduling: {
-        type: Sequelize.DATE
-      },
-      client_obs: {
-        type: Sequelize.STRING
-      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {
@@ -30,18 +24,11 @@ module.exports = {
           key: 'id'
         }
       },
-      timetable_user_id: {
+      schedule_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'TimeTable', 
-          key: 'user_id'
-        }
-      },
-      timetable_schedule_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'TimeTable', 
-          key: 'schedule_id'
+          model: 'Schedule', 
+          key: 'id'
         }
       }
 

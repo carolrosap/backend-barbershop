@@ -1,4 +1,4 @@
-const { CategoryService } = require('../models'); // Verifique o caminho correto para o modelo User
+const { CategoryService }  = require('../models'); // Verifique o caminho correto para o modelo User
 
 const categoriesServiceData = [
   {

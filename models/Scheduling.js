@@ -15,16 +15,13 @@ module.exports = (sequelize, DataTypes) => {
       });
       Scheduling.belongsTo(models.User, {
         foreignKey: 'user_id',
-        as: 'professional',
-      });
-      Scheduling.belongsTo(models.TimeTable, {
-        foreignKey: 'timetable_user_id',
         as: 'client',
       });
       Scheduling.belongsTo(models.Schedule, {
-        foreignKey: 'timetable_schedule_id',
+        foreignKey: 'schedule_id',
         as: 'schedule',
       });
+      
     }
   }
   Scheduling.init({
@@ -33,12 +30,9 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true, // Adicione essa opção para definir 'id' como chave primária
       autoIncrement: true
     },
-    date_scheduling: DataTypes.DATE,
-    client_obs: DataTypes.STRING, 
     user_id: DataTypes.INTEGER,
     service_id: DataTypes.INTEGER,
-    timetable_user_id: DataTypes.INTEGER,
-    timetable_schedule_id: DataTypes.INTEGER
+    schedule_id: DataTypes.INTEGER
 
   }, {
     sequelize,

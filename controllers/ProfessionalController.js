@@ -1,16 +1,27 @@
-const UserController = require('./UserController'); 
-const { User } = require('../models');
+const UserController = require('./UserController');
+const { User, Service } = require('../models');
 
 class ProfessionalController extends UserController {
     // Adicionar métodos e funcionalidades específicas para a classe ClientController
     async getAllProfessionals(req, res) {
         try {
-                const professionals = await User.findAll({
+            const { categoryId } = req.query;
+            const searchParams = {
                 where: {
                     user_type: 'professional',
                     active: 1
                 }
-            });
+            }
+            console.log('categoria', req.query)
+            console.log('categoria', categoryId)
+            if (categoryId) {
+                searchParams.include = [{
+                    model: Service,
+                    as: 'services',
+                    where: { category_id: categoryId }
+                }]
+            }
+            const professionals = await User.findAll(searchParams);
             res.json(professionals);
         } catch (error) {
             console.error(error);

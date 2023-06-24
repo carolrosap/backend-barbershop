@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   Scheduling.init({
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true, // Adicione essa opção para definir 'id' como chave primária
+      primaryKey: true, 
       autoIncrement: true
     },
     user_id: DataTypes.INTEGER,

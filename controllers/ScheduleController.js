@@ -1,26 +1,39 @@
-const Schedule = require('../models/Schedule');
+const { Schedule, User } = require('../models');
 
-exports.getAllSchedules = async (req, res) => {
-  try {
-    const schedules = await Schedule.findAll();
-    res.json(schedules);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
-
-exports.getScheduleById = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const schedule = await Schedule.findByPk(id);
-    if (schedule) {
-      res.json(schedule);
-    } else {
-      res.status(404).json({ error: 'User not found' });
+class ScheduleController {
+  // Adicionar métodos e funcionalidades específicas para a classe ClientController
+  async getAllSchedules(req, res) {
+    try {
+      const schedules = await Schedule.findAll({
+        include: [
+          {
+            model: User,
+            as: 'professional',
+          }
+        ],
+        order: [
+          ['date', 'ASC'], 
+          ['time', 'ASC']
+        ]
+      });
+      res.json(schedules);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
   }
-};
 
-// Definir outras funções de manipulação dos dados do usuário
+  // async createService(req, res) {
+  //   try {
+  //     const serviceData = req.body;
+  //     const newService = await Service.create(serviceData);
+  //     res.status(201).json(newService);
+  //     //console.log(Service);
+  //   } catch (error) {
+  //     console.error(error);
+  //     res.status(500).json({ error: 'Internal Server Error' });
+  //   }
+  // }
+}
+
+module.exports = ScheduleController;

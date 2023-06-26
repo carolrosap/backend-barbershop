@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'user_id',
         as: 'professional',
       });
+      Schedule.hasMany(models.Scheduling, {
+        foreignKey: 'id',
+        as: 'schedule',
+      });
     }
   }
   Schedule.init({

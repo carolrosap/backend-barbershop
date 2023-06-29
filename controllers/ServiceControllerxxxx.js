@@ -12,7 +12,7 @@ class ServiceController {
           },
           {
             model: User,
-            as: 'professional',
+            as: 'user',
           }
         ]
       });

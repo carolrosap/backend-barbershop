@@ -38,15 +38,13 @@ module.exports = {
         type: Sequelize.STRING(2)
       },
       login: {
-        type: Sequelize.STRING(255),
-        allowNull: false,
+        type: Sequelize.STRING(255)
       },
       name: {
         type: Sequelize.STRING(255)
       },
       password: {
-        type: Sequelize.STRING(255),
-        allowNull: false,
+        type: Sequelize.STRING(255)
       },
       gender: {
         type: Sequelize.STRING(1)
@@ -57,6 +55,9 @@ module.exports = {
       user_type: {
         type: Sequelize.ENUM,
         values: ['admin', 'client', 'professional'],
+      },
+      chat_id: {
+        type: Sequelize.STRING(255)
       }
     });
   },

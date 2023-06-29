@@ -3,4 +3,4 @@
 npm i <br>
 npx sequelize-cli db:migrate <br>
 npx sequelize-cli db:seed:all <br>
-node server.js <br>
+npm start <br>

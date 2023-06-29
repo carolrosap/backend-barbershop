@@ -5,6 +5,7 @@ const clientController = new ClientController();
 
 router.get('/', clientController.getAllClients);
 router.post('/', clientController.createClient); 
+router.get('/search', clientController.getClient);
 
 
 module.exports = router;

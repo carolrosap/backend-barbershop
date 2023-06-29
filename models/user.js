@@ -39,7 +39,8 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     gender: DataTypes.STRING,
     telephone: DataTypes.INTEGER,
-    user_type: DataTypes.ENUM(['admin','client', 'professional' ])
+    user_type: DataTypes.ENUM(['admin','client', 'professional' ]),
+    chat_id: DataTypes.STRING
 
   }, {
     sequelize,

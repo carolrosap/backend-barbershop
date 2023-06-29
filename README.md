@@ -9,9 +9,9 @@ npm start <br>
 ### Acesso em: <br>
 localhost:3000/
 ### Rotas disponíveis: <br>
-/professional
-/client
-/service
-/schedule
-/scheduling
+/professional <br>
+/client <br>
+/service <br>
+/schedule <br>
+/scheduling <br>
 

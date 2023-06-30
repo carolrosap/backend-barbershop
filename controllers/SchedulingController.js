@@ -6,32 +6,38 @@ class ServiceController {
   // Adicionar métodos e funcionalidades específicas para a classe ClientController
   async getAllSchedulings(req, res) {
     try {
-      const schedulings = await Scheduling.findAll({
+      const { userId } = req.query;
+      let where = [];
+      let include = [];
+      if (userId) {
+        where.push({
+          user_id: userId
+        })
+      }
+      include.push( {
+        model: User,
+        as: 'client',
+      });
+      include.push({
+        model: Service,
+        as: 'service',
         include: [
           {
+            model: CategoryService,
+            as: 'category'
+          },
+          {
             model: User,
-            as: 'client',
-          },
-          {
-            model: Service,
-            as: 'service',
-            include: [
-              {
-                model: CategoryService,
-                as: 'category'
-              },
-              {
-                model: User,
-                as: 'professional'
-              }
-            ],
-          },
-          {
-            model: Schedule,
-            as: 'schedule',
+            as: 'professional'
           }
         ]
       });
+      include.push({
+        model: Schedule,
+        as: 'schedule',
+      });
+      const searchParams = {include, where};
+      const schedulings = await Scheduling.findAll(searchParams);
       res.json(schedulings);
     } catch (error) {
       console.error(error);

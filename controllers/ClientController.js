@@ -44,17 +44,12 @@ class ClientController extends UserController {
       const clientData = req.body;
       clientData.user_type = "client";
       const newClient = await User.create(clientData);
-      //console.log('created =========', newClient)
       res.status(201).json(newClient);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
-
-  // async testeCallback(req, res) {
-  //   res.status(200).json(req.body);
-  // }
 }
 
 module.exports = ClientController;

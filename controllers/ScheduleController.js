@@ -4,7 +4,7 @@ class ScheduleController {
   // Adicionar métodos e funcionalidades específicas para a classe ClientController
   async getAllSchedules(req, res) {
     try {
-      const { userId, available } = req.query
+      const { userId, available } = req.query;
       const include = [];
       const where = [];
       if (userId) {
